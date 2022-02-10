@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miro Integration</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <style>
+    .demo-card-square.mdl-card {
+      width: 320px;
+      height: 320px;
+      margin: 10px;
+    }
+
+    .demo-card-square>.mdl-card__title {
+      color: #fff;
+      background:
+        url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Create a new Board -->
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Create new Board</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+
+      <!-- Simple Textfield -->
+      <form onsubmit="createBoard()">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="sample1">
+          <label class="mdl-textfield__label" for="sample1">Board name...</label>
+        </div>
+        <!-- Colored raised button -->
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+          Create
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+    function createBoard() {
+      console.log(sample1.value);
+    }
+
+    function sendRequest() {
+
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer WFBTvelIK9wAQR9keR8IdBp1FKA'
+      },
+      body: JSON.stringify({ name: 'Untitled', sharingPolicy: { access: 'private', teamAccess: 'private' } })
+    };
+
+    fetch('https://api.miro.com/v1/boards', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+  </script>
+
+</body>
+
+</html>
